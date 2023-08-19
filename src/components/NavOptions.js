@@ -1,6 +1,7 @@
 import React from 'react'
 import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { AntDesign } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 const data = [
     {
@@ -18,6 +19,9 @@ const data = [
 ]
 
 const NavOptions = () => {
+
+    const navigation = useNavigation()
+
     return (
         <FlatList
             data={data}
@@ -26,6 +30,7 @@ const NavOptions = () => {
             renderItem={({ item }) => (
                 <TouchableOpacity
                     className="p-2 pl-8 pb-8 pt-4 bg-gray-200 m-2 w-40"
+                    onPress={() => { navigation.navigate(item.screen) }}
                 >
                     <View>
                         <Image source={{ uri: item.image }} style={{ width: 120, height: 120, resizeMode: 'contain' }} />
