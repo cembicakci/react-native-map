@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import { FlatList, Image, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { useNavigation } from '@react-navigation/native';
 
+import { useSelector } from 'react-redux';
+import { selectTravelTimeInformation } from '../redux/slices/navSlice';
+
 import { Ionicons } from '@expo/vector-icons';
 
 const data = [
@@ -27,8 +30,10 @@ const data = [
 
 const RideOptionsCard = () => {
     const navigation = useNavigation()
-
     const [selected, setSelected] = useState(null)
+    const travelTimeInformation = useSelector(selectTravelTimeInformation)
+
+    console.log(travelTimeInformation)
 
     return (
         <SafeAreaView className="bg-white flex-1">
@@ -38,7 +43,7 @@ const RideOptionsCard = () => {
                 }}>
                     <Ionicons name={"chevron-back-circle"} size={24} color="black" />
                 </TouchableOpacity>
-                <Text className="text-center py-5 text-xl">Select a Ride</Text>
+                <Text className="text-center py-5 text-xl">Select a Ride - {travelTimeInformation?.distance.text}</Text>
             </View>
 
             <FlatList
@@ -55,7 +60,7 @@ const RideOptionsCard = () => {
 
                             <View className="-ml-6">
                                 <Text className="text-xl font-semibold">{item.title}</Text>
-                                <Text>Travel time...</Text>
+                                <Text>{travelTimeInformation?.duration.text}</Text>
                             </View>
 
                             <Text className="text-xl">$99</Text>
