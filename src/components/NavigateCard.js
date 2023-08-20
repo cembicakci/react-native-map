@@ -8,6 +8,7 @@ import { useDispatch } from 'react-redux';
 
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { GOOGLE_MAPS_APIKEY } from '@env'
+import NavFavourites from './NavFavourites';
 
 const NavigateCard = () => {
 
@@ -58,6 +59,8 @@ const NavigateCard = () => {
                         debounce={400}
                     />
                 </View>
+
+                <NavFavourites />
             </View>
         </SafeAreaView>
     )
