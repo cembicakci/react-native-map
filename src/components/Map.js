@@ -1,14 +1,18 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import MapView, { Marker } from 'react-native-maps';
+import MapViewDirections from 'react-native-maps-directions';
 
 //Redux
 import { useSelector } from 'react-redux';
-import { selectOrigin } from '../redux/slices/navSlice';
+import { selectDestination, selectOrigin } from '../redux/slices/navSlice';
+
+import { GOOGLE_MAPS_APIKEY } from '@env'
 
 const Map = () => {
 
     const origin = useSelector(selectOrigin)
+    const destination = useSelector(selectDestination)
 
     return (
         <MapView
@@ -22,6 +26,16 @@ const Map = () => {
                 longitudeDelta: 0.005,
             }}
         >
+            {origin && destination && (
+                <MapViewDirections
+                    origin={origin.description}
+                    destination={destination.description}
+                    apikey={GOOGLE_MAPS_APIKEY}
+                    strokeColor='black'
+                    strokeWidth={3}
+                />
+            )}
+
             {origin?.location && (
                 <Marker
                     coordinate={{
