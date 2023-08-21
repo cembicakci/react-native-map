@@ -33,6 +33,7 @@ const RideOptionsCard = () => {
     const [selected, setSelected] = useState(null)
     const travelTimeInformation = useSelector(selectTravelTimeInformation)
 
+    const SURGE_CHARGE_RATE = 1.5
     console.log(travelTimeInformation)
 
     return (
@@ -43,36 +44,7 @@ const RideOptionsCard = () => {
                 }}>
                     <Ionicons name={"chevron-back-circle"} size={24} color="black" />
                 </TouchableOpacity>
-                <Text className="text-center py-5 text-xl">Select a Ride - {travelTimeInformation?.distance.text}</Text>
-            </View>
-
-            <FlatList
-                data={data}
-                keyExtractor={(item) => item.id}
-                renderItem={({ item }) => {
-                    return (
-                        <TouchableOpacity
-                            className={`items-center justify-between flex-row px-10 ${item.id === selected?.id && "bg-slate-200"}`}
-                            onPress={() => {
-                                setSelected(item)
-                            }}>
-                            <Image style={{ width: 100, height: 100, resizeMode: 'contain' }} source={{ uri: item.image }} />
-
-                            <View className="-ml-6">
-                                <Text className="text-xl font-semibold">{item.title}</Text>
-                                <Text>{travelTimeInformation?.duration.text}</Text>
-                            </View>
-
-                            <Text className="text-xl">$99</Text>
-                        </TouchableOpacity>
-                    )
-                }}
-            />
-
-            <View>
-                <TouchableOpacity className={`bg-black py-3 m-3 ${!selected && "bg-gray-300"}`} disabled={!selected}>
-                    <Text className="text-center text-white text-xl">Choose {selected?.title}</Text>
-                </TouchableOpacity>
+                <Text className="text-center py-5 text-xl">{travelTimeInformation?.distance.text} - {travelTimeInformation?.duration.text}</Text>
             </View>
         </SafeAreaView>
     )

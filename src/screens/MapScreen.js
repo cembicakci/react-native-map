@@ -11,11 +11,10 @@ const Stack = createNativeStackNavigator();
 const MapScreen = () => {
     return (
         <View>
-            <View className="h-1/2">
+            <View className="h-3/4">
                 <Map />
             </View>
-            <View className="h-1/2">
-
+            <View className="h-1/4">
                 <Stack.Navigator>
                     <Stack.Screen name="NavigateCard" component={NavigateCard} options={{ headerShown: false }} />
                     <Stack.Screen name="RideOptionsCard" component={RideOptionsCard} options={{ headerShown: false }} />

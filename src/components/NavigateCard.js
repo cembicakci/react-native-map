@@ -23,7 +23,6 @@ const NavigateCard = () => {
 
     return (
         <SafeAreaView className="bg-white flex-1">
-            <Text className="text-center py-5 text-xl">Good Morning</Text>
             <View className="border-t border-gray-200 flex-shrink">
                 <View>
                     <GooglePlacesAutocomplete
@@ -66,27 +65,8 @@ const NavigateCard = () => {
                     />
                 </View>
 
-                <NavFavourites />
+                {/* <NavFavourites /> */}
 
-                <View className="flex-row bg-white justify-evenly py-2 mt-auto border-t border-gray-100">
-                    <TouchableOpacity className="flex flex-row bg-black w-24 px-4 py-3 rounded-full items-center justify-between" onPress={() => {
-                        navigation.navigate('RideOptionsCard')
-                    }}>
-                        <View className="items-center">
-                            <Ionicons name={"car"} size={22} color="white" />
-                        </View>
-
-                        <Text className="text-white text-center">Rides</Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity className="flex flex-row bg-white w-24 px-4 py-3 rounded-full items-center justify-between">
-                        <View className="items-center">
-                            <Ionicons name={"fast-food-outline"} size={22} color="black" />
-                        </View>
-
-                        <Text className="text-black text-center">Eats</Text>
-                    </TouchableOpacity>
-                </View>
             </View>
         </SafeAreaView>
     )
